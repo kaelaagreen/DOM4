@@ -1,5 +1,32 @@
 "use strict";
 
+document.querySelector("form").addEventListener("submit", function (event){
+    const data = new FormData(document.querySelector("form"));
+    const userInput = Number(data.get("quantity"));
+    console.log(userInput);
+    console.log(typeof userInput);
+
+    const dropDown = data.get("coinType");
+    console.log(dropDown);
+    for(let coinPopup=0; coinPopup<userInput;coinPopup++){
+        event.preventDefault();
+        if(dropDown.valueOf()=="penny"){
+            document.querySelector(".coins").innerHTML += '<div class="oneCent"><p class = "penny1">Penny</p></div>';
+        } else if (dropDown.valueOf()=="nickel"){
+        document.querySelector(".coins").innerHTML += '<div class="fiveCent"><p class = "nickel5">Nickel</p></div>';
+      }else if (dropDown.valueOf()=="dime"){
+        document.querySelector(".coins").innerHTML += '<div class="tenCent"><p class = "dime10">Dime</p></div>';
+      }else if (dropDown.valueOf()=="quarter"){
+        document.querySelector(".coins").innerHTML += '<div class="twentyFiveCent"><p class = "quarter25">Quarter</p></div>'
+      }
+};}); 
+
+
+
+
+
+//DON'T MIND THIS.//
+
 // // <div id="oneCent"><p id = "penny1">Penny</p></div>
 
 
@@ -27,6 +54,7 @@
 // nickelPara.innerText = "Nickel"
 
 // anotherNickel.append(nickelPara);
+
 
 // document.querySelector(".coins").append(anotherNickel);
 
@@ -61,23 +89,6 @@
 
 
 // function addPenny (){
-    document.querySelector("form").addEventListener("submit", function (event){
-        const data = new FormData(document.querySelector("form"));
-        const userInput = Number(data.get("quantity"));
-        console.log(userInput);
-        console.log(typeof userInput);
-    
-        const dropDown = data.get("coinType");
-        console.log(dropDown);
-        for(let coinPopup=0; coinPopup<userInput;coinPopup++){
-            event.preventDefault();
-            if(dropDown.valueOf()=="penny"){
-                document.querySelector(".coins").innerHTML += '<div class="oneCent"><p class = "penny1">Penny</p></div>';
-            } else if (dropDown.valueOf()=="nickle"){
-            document.querySelector(".coins").innerHTML += '<div class="fiveCent"><p class = "nickel5">Nickel</p></div>'
-          }
-};
-}); 
 
 // function addNickel (){
 //     document.querySelector("form").addEventListener("submit", function (event){
