@@ -1,6 +1,6 @@
 "use strict";
 
-var coinCounter = Number(document.querySelector("section").childElementCount)
+var coinCounter = (document.querySelector("section").childElementCount)
 
 document.querySelector("form").addEventListener("submit", function (event){
     event.preventDefault();
@@ -10,14 +10,7 @@ document.querySelector("form").addEventListener("submit", function (event){
     console.log(typeof userInput);
     const dropDown = data.get("coinType");
     console.log(dropDown);
-    document.querySelector("span").innerText = coinCounter;
     for(let coinPopup=0; coinPopup<userInput;coinPopup++){
-        document.querySelector(".coins").addEventListener("click",function(event){
-            if(event.target.localName == "div"){
-                event.target.remove();
-            };
-            document.querySelector("span").innerText = coinCounter;
-        });
         if(dropDown.valueOf()=="penny"){
             document.querySelector(".coins").innerHTML += '<div class="oneCent"><p class = "penny1">Penny</p></div>';
         } else if (dropDown.valueOf()=="nickel"){
@@ -29,6 +22,13 @@ document.querySelector("form").addEventListener("submit", function (event){
       }
     }
 });
+document.querySelector("span").innerText = coinCounter;
+document.querySelector(".coins").addEventListener("click",function(event){
+  if(event.target.localName == "div"){
+      event.target.remove();
+      document.querySelector("span").innerText = coinCounter;
+  }
+  });
  
 //DON'T MIND THIS.//
 
