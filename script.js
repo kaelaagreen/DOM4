@@ -1,7 +1,5 @@
 "use strict";
 
-var coinCounter = (document.querySelector("section").childElementCount)
-
 document.querySelector("form").addEventListener("submit", function (event){
     event.preventDefault();
     const data = new FormData(document.querySelector("form"));
@@ -20,12 +18,14 @@ document.querySelector("form").addEventListener("submit", function (event){
       }else if (dropDown.valueOf()=="quarter"){
         document.querySelector(".coins").innerHTML += '<div class="twentyFiveCent"><p class = "quarter25">Quarter</p></div>';
       }
+      var coinCounter = (document.querySelector("section").childElementCount)
+      document.querySelector("span").innerText = coinCounter;
     }
 });
-document.querySelector("span").innerText = coinCounter;
 document.querySelector(".coins").addEventListener("click",function(event){
   if(event.target.localName == "div"){
       event.target.remove();
+      var coinCounter = (document.querySelector("section").childElementCount)
       document.querySelector("span").innerText = coinCounter;
   }
   });
