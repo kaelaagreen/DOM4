@@ -1,15 +1,23 @@
 "use strict";
 
+var coinCounter = Number(document.querySelector("section").childElementCount)
+
 document.querySelector("form").addEventListener("submit", function (event){
+    event.preventDefault();
     const data = new FormData(document.querySelector("form"));
     const userInput = Number(data.get("quantity"));
     console.log(userInput);
     console.log(typeof userInput);
-
     const dropDown = data.get("coinType");
     console.log(dropDown);
+    document.querySelector("span").innerText = coinCounter;
     for(let coinPopup=0; coinPopup<userInput;coinPopup++){
-        event.preventDefault();
+        document.querySelector(".coins").addEventListener("click",function(event){
+            if(event.target.localName == "div"){
+                event.target.remove();
+            };
+            document.querySelector("span").innerText = coinCounter;
+        });
         if(dropDown.valueOf()=="penny"){
             document.querySelector(".coins").innerHTML += '<div class="oneCent"><p class = "penny1">Penny</p></div>';
         } else if (dropDown.valueOf()=="nickel"){
@@ -17,14 +25,11 @@ document.querySelector("form").addEventListener("submit", function (event){
       }else if (dropDown.valueOf()=="dime"){
         document.querySelector(".coins").innerHTML += '<div class="tenCent"><p class = "dime10">Dime</p></div>';
       }else if (dropDown.valueOf()=="quarter"){
-        document.querySelector(".coins").innerHTML += '<div class="twentyFiveCent"><p class = "quarter25">Quarter</p></div>'
+        document.querySelector(".coins").innerHTML += '<div class="twentyFiveCent"><p class = "quarter25">Quarter</p></div>';
       }
-};}); 
-
-
-
-
-
+    }
+});
+ 
 //DON'T MIND THIS.//
 
 // // <div id="oneCent"><p id = "penny1">Penny</p></div>

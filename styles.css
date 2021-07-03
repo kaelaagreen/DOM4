@@ -69,3 +69,7 @@ button{
     border: 4px groove rgb(6, 77, 53);
     margin: 30px;
 }
+section{
+    display:flex;
+    flex-wrap: wrap;
+}
